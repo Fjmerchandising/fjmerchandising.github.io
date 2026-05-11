@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000080" />
+
+  <title>FJ Merchandising | Terceirização de PDV em Santa Catarina há 30 anos</title>
+  <meta name="description" content="Terceirização de merchandising e gestão de PDV para indústrias em Santa Catarina. Metodologia própria, 30 anos de mercado. Agende um diagnóstico estratégico." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="FJ Merchandising | Terceirização de PDV em Santa Catarina há 30 anos" />
+  <meta property="og:description" content="Metodologia própria de merchandising para indústrias em Santa Catarina. 30 anos transformando gôndolas em sell-out." />
+  <meta property="og:image" content="assets/og-image.jpg" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Google tag (gtag.js) — GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H8EGLTFT93"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-H8EGLTFT93');
+  </script>
+</head>
+<body>
+
+  <!-- ============================================
+       HEADER
+  ============================================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#hero" class="logo" aria-label="FJ Merchandising - voltar ao topo">
+        <img src="assets/logo-cropped.png" alt="FJ Merchandising" class="logo-img" />
+        <span class="logo-text">FJ <strong>MERCHANDISING</strong></span>
+      </a>
+      <a href="#hero-form" class="btn btn-sm btn-yellow header-cta">Agendar diagnóstico</a>
+    </div>
+  </header>
+
+  <!-- ============================================
+       SEÇÃO 1 — HERO
+  ============================================= -->
+  <section id="hero" class="hero">
+    <div class="container hero-grid">
+
+      <!-- Coluna esquerda: texto -->
+      <div class="hero-text">
+        <span class="tag">MERCHANDISING ESTRATÉGICO EM SANTA CATARINA</span>
+        <h1>30 anos transformando gôndolas em máquinas de <span class="nowrap">sell‑out</span></h1>
+        <p class="lead">
+          Sua marca merece mais do que promotor terceirizado comum. Aqui em Santa Catarina,
+          a FJ Merchandising opera com método próprio, equipe formada e resultados
+          mensuráveis há três décadas.
+        </p>
+
+        <ul class="hero-bullets">
+          <li>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Metodologia própria comprovada em SC
+          </li>
+          <li>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Equipe formada e gerida por método consolidado
+          </li>
+          <li>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Cobertura especializada no varejo catarinense
+          </li>
+        </ul>
+      </div>
+
+      <!-- Coluna direita: card com formulário -->
+      <div class="hero-form-wrap">
+        <div class="form-card" id="hero-form">
+          <h2 class="form-title">Agende um diagnóstico estratégico</h2>
+          <p class="form-sub">Conversa de 30 minutos com nosso fundador. Sem compromisso.</p>
+
+          <form id="leadForm" novalidate>
+
+            <!-- Filtro: indústria x candidato -->
+            <fieldset class="filter-fieldset">
+              <legend>Qual a sua situação?</legend>
+
+              <label class="radio-option">
+                <input type="radio" name="userType" value="industria" required />
+                <span>Represento uma indústria interessada em terceirizar PDV</span>
+              </label>
+
+              <label class="radio-option">
+                <input type="radio" name="userType" value="candidato" required />
+                <span>Sou candidato a vaga de promotor</span>
+              </label>
+            </fieldset>
+
+            <!-- Mensagem para candidato -->
+            <div id="candidatoMsg" class="candidato-msg" hidden>
+              <p>
+                Nossas vagas e processos seletivos são divulgados pelo Instagram
+                <strong>@fj.merchandisingsc</strong>. Boa sorte!
+              </p>
+              <a href="https://www.instagram.com/fj.merchandisingsc/" target="_blank" rel="noopener" class="btn btn-yellow">
+                Ir para o Instagram →
+              </a>
+            </div>
+
+            <!-- Campos para indústria -->
+            <div id="industriaFields" class="industria-fields" hidden>
+
+              <div class="field">
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" name="nome" autocomplete="name" />
+              </div>
+
+              <div class="field">
+                <label for="empresa">Empresa</label>
+                <input type="text" id="empresa" name="empresa" autocomplete="organization" />
+              </div>
+
+              <div class="field">
+                <label for="cargo">Cargo</label>
+                <input type="text" id="cargo" name="cargo" autocomplete="organization-title" />
+              </div>
+
+              <div class="field">
+                <label for="whatsapp">WhatsApp</label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="(47) 99999-9999" autocomplete="tel" />
+              </div>
+
+              <div class="field">
+                <label for="cidade">Cidade onde atuam</label>
+                <input type="text" id="cidade" name="cidade" autocomplete="address-level2" />
+              </div>
+
+              <div class="field">
+                <label for="desafio">Principal desafio atual no PDV <span class="optional">(opcional)</span></label>
+                <textarea id="desafio" name="desafio" rows="3" maxlength="200" placeholder="Conte rapidamente o que mais te incomoda hoje no PDV..."></textarea>
+                <small class="char-count"><span id="charCount">0</span>/200</small>
+              </div>
+
+              <button type="submit" class="btn btn-yellow btn-block">AGENDAR DIAGNÓSTICO →</button>
+
+              <p class="form-foot">Resposta em até 1 dia útil. Seus dados ficam só com a gente.</p>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       SEÇÃO 2 — PROVA DE AUTORIDADE
+  ============================================= -->
+  <section class="authority reveal">
+    <div class="container">
+      <div class="numbers-grid">
+        <div class="num-item">
+          <div class="num">30+</div>
+          <p>Anos de experiência em Santa Catarina</p>
+        </div>
+        <div class="num-item">
+          <div class="num">100%</div>
+          <p>Foco em indústrias e PDV</p>
+        </div>
+        <div class="num-item">
+          <div class="num">SC</div>
+          <p>Atuação especializada e regional</p>
+        </div>
+        <div class="num-item">
+          <div class="num">1</div>
+          <p>Metodologia própria comprovada</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SEÇÃO 3 — O PROBLEMA
+  ============================================= -->
+  <section class="problem reveal">
+    <div class="container">
+      <header class="section-head">
+        <h2>Sua indústria está perdendo <span class="nowrap">sell‑out</span> e talvez nem perceba</h2>
+        <p>Os problemas mais comuns que recebemos de indústrias antes de virarem clientes:</p>
+      </header>
+
+      <div class="cards-3">
+        <article class="card">
+          <div class="card-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/>
+              <polyline points="17 18 23 18 23 12"/>
+            </svg>
+          </div>
+          <h3>Relatórios genéricos que não geram ação</h3>
+          <p>Você recebe planilha bonita toda semana, mas não sabe o que mudou no PDV, nem o que fazer com aquela informação.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <line x1="17" y1="8" x2="23" y2="14"/>
+              <line x1="23" y1="8" x2="17" y2="14"/>
+            </svg>
+          </div>
+          <h3>Promotor terceirizado sem método</h3>
+          <p>Mão de obra trocando toda hora, sem treinamento real, executando sem padrão. O resultado some na hora que a equipe muda.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
+              <line x1="8" y1="2" x2="8" y2="18"/>
+              <line x1="16" y1="6" x2="16" y2="22"/>
+            </svg>
+          </div>
+          <h3>Fornecedor de fora não entende Santa Catarina</h3>
+          <p>Empresas nacionais aplicam a mesma receita em todo lugar. Mas o varejo catarinense tem comportamento próprio que só quem está aqui há tempo enxerga.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SEÇÃO 4 — O MÉTODO FJ
+  ============================================= -->
+  <section class="method reveal">
+    <div class="container">
+      <header class="section-head section-head--light">
+        <h2><span class="hl">O método FJ</span> em 4 etapas</h2>
+        <p>Como transformamos sua presença no PDV em <span class="nowrap">sell‑out</span> mensurável</p>
+      </header>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num">01</span>
+          <h3>Diagnóstico</h3>
+          <p>Mapeamos sua operação atual no varejo catarinense: gôndolas, fluxos, comportamento de shopper, gaps de execução.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">02</span>
+          <h3>Plano estratégico</h3>
+          <p>Construímos um plano de ação específico para sua marca, com metas claras de execução e indicadores de <span class="nowrap">sell‑out</span>.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">03</span>
+          <h3>Equipe formada</h3>
+          <p>Alocamos promotores treinados em nossa metodologia, com supervisão de campo e padrão de execução consistente.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">04</span>
+          <h3>Inteligência de campo</h3>
+          <p>Relatórios objetivos com decisões acionáveis. Você sabe o que está funcionando, o que ajustar, e por quê.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SEÇÃO 5 — POR QUE SC IMPORTA
+  ============================================= -->
+  <section class="sc-matters reveal">
+    <div class="container sc-grid">
+      <div class="sc-text">
+        <h2>Santa Catarina não é igual a qualquer outro mercado</h2>
+        <p>
+          O varejo catarinense tem particularidades que empresas nacionais nunca vão entender
+          no detalhe. Comportamento de compra regional, redes locais com peso próprio,
+          sazonalidades específicas, relacionamento de longo prazo com pontos de venda.
+          A FJ Merchandising está aqui há 30 anos justamente porque entende esse mercado
+          por dentro — não como visitante, mas como parte dele.
+        </p>
+
+        <div class="cities">
+          <span>Blumenau</span>
+          <span>Joinville</span>
+          <span>Indaial</span>
+          <span>Timbó</span>
+          <span>Itajaí</span>
+          <span>Jaraguá do Sul</span>
+          <span>Brusque</span>
+          <span>Chapecó</span>
+          <span>Criciúma</span>
+          <span class="cities-extra">e toda Santa Catarina</span>
+        </div>
+      </div>
+
+      <div class="sc-image">
+        <img src="assets/pdv-gondola-organizada.jpg" alt="Gôndola de PDV em Santa Catarina perfeitamente organizada pela FJ Merchandising" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SEÇÃO 6 — O QUE NOS MOVE
+  ============================================= -->
+  <section class="values reveal">
+    <div class="container">
+      <header class="section-head">
+        <h2>O que move a FJ Merchandising</h2>
+      </header>
+
+      <div class="values-grid">
+        <div class="value-item">
+          <h3>Excelência</h3>
+          <p>Padrão consistente de execução, todo dia, em todo PDV.</p>
+        </div>
+        <div class="value-item">
+          <h3>Transparência</h3>
+          <p>Relatórios claros, prazos cumpridos, contas que fecham.</p>
+        </div>
+        <div class="value-item">
+          <h3>Valorização de pessoas</h3>
+          <p>Promotores formados, valorizados e com carreira no PDV.</p>
+        </div>
+        <div class="value-item">
+          <h3>Parceria</h3>
+          <p>Tratamos sua marca como se fosse nossa. Porque o resultado é compartilhado.</p>
+        </div>
+        <div class="value-item">
+          <h3>Evolução contínua</h3>
+          <p>O varejo muda. Nosso método evolui junto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SEÇÃO 7 — CTA FINAL
+  ============================================= -->
+  <section class="cta-final reveal">
+    <div class="container cta-inner">
+      <span class="cta-dot" aria-hidden="true"></span>
+      <h2>Pronto para transformar sua operação de PDV em Santa Catarina?</h2>
+      <p>Agende uma conversa de 30 minutos com o Fábio, fundador da FJ. Sem compromisso, sem custo, com método.</p>
+      <a href="#hero-form" class="btn btn-yellow btn-lg btn-scroll">QUERO AGENDAR MEU DIAGNÓSTICO →</a>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+  ============================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo logo--light">
+            <img src="assets/logo-cropped.png" alt="FJ Merchandising" class="logo-img" />
+            <span class="logo-text">FJ <strong>MERCHANDISING</strong></span>
+          </div>
+          <p class="tagline">30 anos em Santa Catarina</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ico-inline" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <a href="https://wa.me/5547991939450">(47) 99193-9450</a>
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Endereço</h4>
+          <p>Rua Silvio Scooz, 736</p>
+          <p>Rodeio – SC, CEP 89136-000</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Redes</h4>
+          <div class="socials">
+            <a href="https://www.instagram.com/fj.merchandisingsc/" target="_blank" rel="noopener" aria-label="Instagram FJ Merchandising">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61572347079228" target="_blank" rel="noopener" aria-label="Facebook FJ Merchandising">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 FJ Merchandising. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
