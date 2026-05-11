@@ -282,4 +282,22 @@
     reveals.forEach((el) => el.classList.add('is-visible'));
   }
 
+  // ---------------------------------------------------------
+  // 8. Tracking de cliques no WhatsApp (rodapé + botão flutuante)
+  //    Dispara evento no GA4 toda vez que alguém clica em link wa.me
+  // ---------------------------------------------------------
+  document.querySelectorAll('.wa-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      const source = link.getAttribute('data-wa-source') || 'unknown';
+      if (typeof gtag === 'function') {
+        gtag('event', 'click_whatsapp', {
+          source: source,
+          location: window.location.pathname
+        });
+      }
+      // Loga também no console p/ debug
+      console.log('whatsapp_click', { source });
+    });
+  });
+
 })();

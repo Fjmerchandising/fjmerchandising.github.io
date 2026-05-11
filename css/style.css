@@ -864,3 +864,87 @@ button { font-family: inherit; cursor: pointer; }
   .section-head h2 { font-size: 2.4rem; }
   .cta-inner h2   { font-size: 2.6rem; }
 }
+
+/* ===========================================================
+   BOTÃO FLUTUANTE DE WHATSAPP
+   Aparece sempre no canto inferior, fixo. Mobile-first.
+   =========================================================== */
+.wa-floating {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: var(--font-poppins, 'Poppins', sans-serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+  box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.55), 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wa-floating:hover,
+.wa-floating:focus-visible {
+  transform: translateY(-2px) scale(1.03);
+  background: #1ebe57;
+  box-shadow: 0 16px 40px -8px rgba(37, 211, 102, 0.7), 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.wa-floating svg {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.wa-floating-label {
+  display: none;
+}
+
+/* Em telas maiores, mostra o texto ao lado do ícone */
+@media (min-width: 768px) {
+  .wa-floating {
+    right: 24px;
+    bottom: 24px;
+    padding: 14px 22px;
+  }
+  .wa-floating-label {
+    display: inline-block;
+  }
+}
+
+/* Animação sutil de "pulso" pra chamar atenção */
+@keyframes wa-pulse {
+  0%   { box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.55), 0 0 0 0 rgba(37, 211, 102, 0.6); }
+  70%  { box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.55), 0 0 0 14px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.55), 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.wa-floating {
+  animation: wa-pulse 2.6s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-floating { animation: none; }
+}
+
+/* ===========================================================
+   LINKS DO RODAPÉ (Política de Privacidade)
+   =========================================================== */
+.footer-links {
+  margin-top: 8px;
+  font-size: 0.85rem;
+}
+.footer-links a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footer-links a:hover { color: #fff; }
