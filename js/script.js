@@ -140,6 +140,13 @@
         cidade:  data.cidade,
         cargo:   data.cargo
       });
+
+      // Evento de conversão — Google Ads
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18149075664/BvOUCNyamK0cENDVk85D',
+        'value': 1.0,
+        'currency': 'BRL'
+      });
     }
 
     // Captura na planilha Google (registro + e-mail) antes do redirect
