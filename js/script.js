@@ -297,9 +297,21 @@
     link.addEventListener('click', () => {
       const source = link.getAttribute('data-wa-source') || 'unknown';
       if (typeof gtag === 'function') {
+        // GA4 — evento de clique no WhatsApp
         gtag('event', 'click_whatsapp', {
           source: source,
           location: window.location.pathname
+        });
+
+        // Google Ads — registra conversão (lead via WhatsApp).
+        // Botão da SEÇÃO DO FORMULÁRIO ('form-cta'): valor R$ 2,00 (lead qualificado de indústria).
+        // Demais cliques (rodapé, flutuante): valor R$ 1,00.
+        // Isso ajuda o Google a otimizar lances priorizando leads do formulário.
+        const conversionValue = (source === 'form-cta') ? 2.0 : 1.0;
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18149075664/BvOUCNyamK0cENDVk85D',
+          'value': conversionValue,
+          'currency': 'BRL'
         });
       }
       // Loga também no console p/ debug
