@@ -1163,3 +1163,167 @@ button { font-family: inherit; cursor: pointer; }
   .founder-text h2 { font-size: 2.2rem; }
   .founder-intro { font-size: 1.08rem; }
 }
+
+/* ===========================================================
+   HERO — MINI-CARD DO FUNDADOR (coluna esquerda)
+   Foto pequena do Fábio + nome + credibilidade rápida
+   =========================================================== */
+.hero-founder-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 26px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.hero-founder-photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  border: 2px solid #F5C518;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+.hero-founder-info {
+  flex: 1;
+  min-width: 0;
+}
+.hero-founder-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.hero-founder-name {
+  font-family: var(--font-poppins, 'Poppins', sans-serif);
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: #fff;
+}
+.hero-founder-role {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+}
+.hero-founder-quote {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-style: italic;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Desktop: card maior */
+@media (min-width: 768px) {
+  .hero-founder-card {
+    padding: 18px 20px;
+    gap: 18px;
+  }
+  .hero-founder-photo {
+    width: 76px;
+    height: 76px;
+  }
+  .hero-founder-name { font-size: 1.1rem; }
+  .hero-founder-role { font-size: 0.82rem; }
+  .hero-founder-quote { font-size: 0.92rem; }
+}
+
+/* ===========================================================
+   HERO — CTA DIRETO PELO WHATSAPP (topo do card form)
+   Visível desde que a pessoa carrega a página
+   =========================================================== */
+.hero-cta-direct {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+/* Badge "EXCLUSIVO PARA INDÚSTRIAS E MARCAS" */
+.industry-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #F5C518 0%, #FFD54F 100%);
+  color: #000080;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--font-poppins, 'Poppins', sans-serif);
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 14px -4px rgba(245, 197, 24, 0.5);
+}
+.industry-badge svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: #000080;
+}
+
+/* Reaproveita estilos do form-title/sub mas força layout centralizado dentro do CTA direto */
+.hero-cta-direct .form-title {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  color: #000080;
+}
+.hero-cta-direct .form-sub {
+  margin-bottom: 18px;
+  font-size: 0.93rem;
+  color: #4a4a5a;
+  line-height: 1.5;
+}
+
+/* Botão WA grande (versão hero) */
+.btn-lg {
+  padding: 16px 18px;
+  font-size: 1.02rem;
+  letter-spacing: 0.6px;
+}
+.hero-direct-btn {
+  font-size: 1.05rem;
+  padding: 18px 18px;
+  /* leve animação de "respira" pra chamar atenção */
+  animation: hero-wa-pulse 2.8s ease-out infinite;
+}
+@keyframes hero-wa-pulse {
+  0%   { box-shadow: 0 6px 20px -6px rgba(37, 211, 102, 0.55), 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70%  { box-shadow: 0 6px 20px -6px rgba(37, 211, 102, 0.55), 0 0 0 12px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 6px 20px -6px rgba(37, 211, 102, 0.55), 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-direct-btn { animation: none; }
+}
+
+/* Linha de "confiança" abaixo do botão WA */
+.trust-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: #4a4a5a;
+  font-weight: 500;
+}
+.trust-line svg {
+  width: 16px;
+  height: 16px;
+  color: #1E88E5;
+}
+
+/* Divisor "ou agende pelo formulário" */
+.divider-form {
+  margin: 22px 0 18px;
+}
+.divider-form span {
+  font-size: 0.75rem;
+}
