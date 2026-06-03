@@ -12,7 +12,8 @@
   // ---------------------------------------------------------
 
   // Número do fundador (Fábio) — destino do redirect do WhatsApp
-  const WA_NUMBER = '554991939450';
+  // Formato internacional: 55 (país) + 49 (DDD) + 9 (nono dígito mobile) + 8 dígitos
+  const WA_NUMBER = '5549991939450';
 
   // Endpoint do Google Apps Script — grava cada lead numa planilha Google
   // E manda um e-mail de aviso para o Fábio. 100% grátis, sem limite.
@@ -21,6 +22,11 @@
   //   https://script.google.com/macros/s/AKfycb..../exec ).
   // Se ficar vazio, o lead vai SÓ pelo WhatsApp (sem registro na planilha).
   const SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx7Cybpz-4IsOwN7aCLKn3F_OdVkhMHm-W6mD3kvZKVeGw9ntytSgzLa0km_Drw3njXDg/exec';
+
+  // Conversões Google Ads — labels separados por tipo de evento.
+  // Ambas ações de conversão foram criadas pela ABRii Academy no painel do Google Ads.
+  const AW_CONVERSION_FORM     = 'AW-18149075664/BvOUCNyamK0cENDVk85D';  // ✅ "Lead via formulário"
+  const AW_CONVERSION_WHATSAPP = 'AW-18149075664/JDukCOzV7LccENDVk85D';  // ✅ "Clique WhatsApp LP" (Categoria: Contato | Janela: 30 dias)
 
   // ---------------------------------------------------------
   // 1. Referências do DOM
@@ -141,9 +147,9 @@
         cargo:   data.cargo
       });
 
-      // Evento de conversão — Google Ads
+      // Evento de conversão — Google Ads (LEAD VIA FORMULÁRIO)
       gtag('event', 'conversion', {
-        'send_to': 'AW-18149075664/BvOUCNyamK0cENDVk85D',
+        'send_to': AW_CONVERSION_FORM,
         'value': 1.0,
         'currency': 'BRL'
       });
@@ -290,28 +296,74 @@
   }
 
   // ---------------------------------------------------------
-  // 8. Tracking de cliques no WhatsApp (rodapé + botão flutuante)
-  //    Dispara evento no GA4 toda vez que alguém clica em link wa.me
+  // 8. Injeção de UTMs nos links de WhatsApp
+  //    Captura parâmetros UTM da URL (ex: ?utm_source=google&utm_medium=cpc)
+  //    e adiciona ao texto pré-pronto da mensagem do WhatsApp, pra Fábio
+  //    saber de onde veio o lead direto (sem passar pelo formulário).
+  //    Formato do sufixo (padrão ABRii):
+  //      [Vim via: google/cpc — busca: agência de merchandising]
+  //    Se a pessoa entra direto (sem UTM), injeta [Vim via: direto/organico].
+  // ---------------------------------------------------------
+  (function injectUTMsIntoWhatsAppLinks() {
+    const params = new URLSearchParams(window.location.search);
+    const utmSource   = params.get('utm_source')   || 'direto';
+    const utmMedium   = params.get('utm_medium')   || 'organico';
+    const utmCampaign = params.get('utm_campaign') || '';
+    const utmTerm     = params.get('utm_term')     || '';
+
+    // Monta sufixo no formato do briefing
+    let sufixo = '\n\n[Vim via: ' + utmSource + '/' + utmMedium;
+    if (utmTerm)     sufixo += ' — busca: ' + utmTerm;
+    if (utmCampaign) sufixo += ' — camp: ' + utmCampaign;
+    sufixo += ']';
+
+    // Atualiza todos os links wa.me da página
+    document.querySelectorAll('a[href*="wa.me"]').forEach((link) => {
+      try {
+        const url = new URL(link.href);
+        const textoOriginal = url.searchParams.get('text') || 'Olá, Fábio!';
+        url.searchParams.set('text', textoOriginal + sufixo);
+        link.href = url.toString();
+      } catch (e) {
+        // Se algum link estiver malformado, só ignora — não quebra os outros
+        console.warn('Falha ao injetar UTM em link WhatsApp:', e);
+      }
+    });
+
+    console.log('UTM injetada nos links WhatsApp:', sufixo.trim());
+  })();
+
+  // ---------------------------------------------------------
+  // 9. Tracking de cliques no WhatsApp
+  //    Dispara dois eventos por clique:
+  //    a) GA4 — 'click_whatsapp' (engagement)
+  //    b) Google Ads — 'conversion' (ação de "Clique WhatsApp LP")
   // ---------------------------------------------------------
   document.querySelectorAll('.wa-link').forEach((link) => {
     link.addEventListener('click', () => {
       const source = link.getAttribute('data-wa-source') || 'unknown';
       if (typeof gtag === 'function') {
-        // GA4 — evento de clique no WhatsApp
-        gtag('event', 'click_whatsapp', {
+        // a) GA4 — evento de engajamento (naming PT-BR conforme padrão ABRii)
+        gtag('event', 'clique_whatsapp', {
+          'event_category': 'engagement',
+          'event_label': 'botao_whatsapp_' + source,
           source: source,
           location: window.location.pathname
         });
 
-        // Google Ads — registra conversão (lead via WhatsApp).
-        // Botão da SEÇÃO DO FORMULÁRIO ('form-cta'): valor R$ 2,00 (lead qualificado de indústria).
-        // Demais cliques (rodapé, flutuante): valor R$ 1,00.
-        // Isso ajuda o Google a otimizar lances priorizando leads do formulário.
-        const conversionValue = (source === 'form-cta') ? 2.0 : 1.0;
+        // b) Google Ads — conversão "Clique WhatsApp LP"
+        // Botões com sinal de intenção forte ('hero-direct' e 'form-cta'):
+        //   R$ 2,00 (lead qualificado de indústria — alta intenção).
+        // Demais cliques (rodapé, flutuante): R$ 1,00.
+        // Isso ajuda o algoritmo do Google Ads a priorizar lances pra
+        // palavras-chave que trazem leads de maior intenção.
+        const highIntentSources = ['hero-direct', 'form-cta'];
+        const conversionValue = highIntentSources.includes(source) ? 2.0 : 1.0;
         gtag('event', 'conversion', {
-          'send_to': 'AW-18149075664/BvOUCNyamK0cENDVk85D',
+          'send_to': AW_CONVERSION_WHATSAPP,
           'value': conversionValue,
-          'currency': 'BRL'
+          'currency': 'BRL',
+          'transaction_id': 'wa_' + Date.now()  // evita dedup; cada clique = 1 evento
         });
       }
       // Loga também no console p/ debug
